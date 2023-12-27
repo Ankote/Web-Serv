@@ -3,10 +3,16 @@ EXEC = web-serve
 
 CPP = c++
 
-CPPFLAGS =-Wall -Wextra -Werror -std=c++98 
+CPPFLAGS =-Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
-SRCS = srcs/web-server.cpp
-HDRS = srcs/web-server.hpp
+RQST= srcs/requests
+SRCS =	srcs/web-server.cpp\
+		$(RQST)/catchRequest.cpp\
+		$(RQST)/parceRequest.cpp
+HDRS =  srcs/web-server.hpp\
+		$(RQST)/catchRequest.hpp\
+		$(RQST)/parceRequest.hpp\
+
 OBJS = $(SRCS:.cpp=.o)
 
 YELLOW = \033[0;33m
